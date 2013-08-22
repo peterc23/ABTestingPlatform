@@ -7,11 +7,6 @@ var tP = require('../resources/tableProperties.js');
 
 exports.userLoginRequest = function(req, res)
 {
-    /**
-     * req.body should contain
-     * {method:'email', fbToken:'token', username:'userId', password:'password', platform:'platform'}
-     */
-
     var userId = req.params.userId;
     if (!userId) {
         res.send("Cannot retrieve experiments with null unique id", 400);
