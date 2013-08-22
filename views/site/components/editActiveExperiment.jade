@@ -1,0 +1,38 @@
+if (newActiveExperiment)
+    theUrl = "/activeExperiments/new"
+
+    buttonText = "Add New Active Experiment"
+else
+    theUrl = "/activeExperiments/"+chosenActiveExperiment.activeExperimentId+"/update"
+    buttonText = "Update Changes"
+
+
+form(action="#{theUrl}", method="post", enctype="multipart/form-data")
+    .row
+        .span12
+            .control-group
+                label.control-label(for="inputExperimentName") Experiment Name
+                .controls
+                    select#inputExperimentName(type="text", name="experimentId", placeholder="#{chosenActiveExperiment.experimentName}")
+                        each experiment in experiments
+                            option(value="#{experiment.experimentId}") #{experiment.experimentName}
+            .control-group
+                label.control-label(for="inputExperimentVariants") Active Variant
+                 .controls
+                     input#inputExperimentVariants(name="activeExperimentVariant", type="text", placeholder="eg. 2", value="#{chosenActiveExperiment.activeExperimentVariant}")
+            .control-group
+                label.control-label(for="inputExperimentHash") % of users exposed
+                 .controls
+                     input#inputExperimentHash(name="activeExperimentHash", type="text", placeholder="eg. 10 for 10% of population", value="#{chosenActiveExperiment.activeExperimentHash}")
+            .control-group
+                label.control-label(for="inputExperimentPercent") % of users in Variant
+                 .controls
+                     input#inputExperimentPercent(name="activeExperimentPercent", type="text", placeholder="eg. 10% of Hash in this variant", value="#{chosenActiveExperiment.activeExperimentPercent}")
+            .control-group
+                label.control-label(for="inputExperimentWhitelist") Whitelist
+                 .controls
+                     input#inputExperimentWhitelist(name="whitelist", type="text", placeholder="eg. 12345,22222,3333", value="#{chosenActiveExperiment.whitelist}")
+            .control-group
+                a.btn.btn-info(href="/activeExperiments") Back To Experiments List
+                &nbsp;
+                button.btn.btn-primary(type="submit") #{buttonText}

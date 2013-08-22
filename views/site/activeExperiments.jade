@@ -1,0 +1,29 @@
+doctype 5
+html(lang="en")
+    head
+        include components/header
+        script(type="text/javascript", src="/tagmanager/bootstrap-tagmanager.js");
+        link(rel="stylesheet", href="/tagmanager/bootstrap-tagmanager.css");
+    body
+        .container
+            include components/navbar
+
+            legend Active Experiments
+            ul.breadcrumb
+                li
+                    a(href="/activeExperiments") Active Experiments
+                if chosenExperiment
+                    li
+                        span.divider /
+                        a(href="/activeExperiments/"+chosenExperiment.experimentId+"/edit") #{chosenExperiment.experimentName}
+                if newActiveExperiment
+                    li
+                        span.divider /
+                        a(href="#") new active experiment
+
+            if newActiveExperiment || chosenActiveExperiment
+                include components/editActiveExperiment
+            else
+                include components/editActiveExperiments
+
+a.btn.btn-primary(href="/activeExperiments/newActiveExperimentPage") Add New Experiment

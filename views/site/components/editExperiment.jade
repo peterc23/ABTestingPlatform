@@ -1,0 +1,28 @@
+if (newExperiment)
+    theUrl = "/experiments/new"
+
+    buttonText = "Add New Experiment"
+else
+    theUrl = "/experiments/"+chosenExperiment.experimentId+"/update"
+    buttonText = "Update Changes"
+
+
+form(action="#{theUrl}", method="post", enctype="multipart/form-data")
+    .row
+        .span12
+            .control-group
+                label.control-label(for="inputExperimentName") Experiment Name
+                .controls
+                    input#inputExperimentName(type="text", name="experimentName", placeholder="eg. IOS_MAP_DEFAULT_DISTANCE", value="#{chosenExperiment.experimentName}")
+            .control-group
+                label.control-label(for="inputExperimentDesc") Experiment Description
+                .controls
+                    textarea.inputExperimentDescBox#inputExperimentDesc(name="experimentDesc", placeholder="eg. Experiment to test distance range effect on map") #{chosenExperiment.experimentDesc}
+            .control-group
+                label.control-label(for="inputExperimentVariants") Number of Variants
+                 .controls
+                     input#inputExperimentVariants(name="experimentVariants", type="text", placeholder="eg. 2 for [0,1,2]", value="#{chosenExperiment.experimentVariants}")
+            .control-group
+                a.btn.btn-info(href="/experiments") Back To Experiments List
+                &nbsp;
+                button.btn.btn-primary(type="submit") #{buttonText}

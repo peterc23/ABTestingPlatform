@@ -1,0 +1,18 @@
+table.table.table-bordered.table-hover
+    thead
+        tr
+            th Experiment Name
+            th Description
+            th Edit
+    tbody
+        each experiment in experiments
+            tr
+                td
+                    p #{experiment.experimentName}
+                td
+                    p #{experiment.experimentDesc}
+                td
+                    a.btn.btn-primary(href="/experiments/#{experiment.experimentId}/edit") Edit
+                    &nbsp;
+                    button.btn.btn-danger(onclick="onDeleteMenuItemButtonClicked(#{experiment.experimentId}") Delete
+

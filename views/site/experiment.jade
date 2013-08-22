@@ -1,0 +1,26 @@
+doctype 5
+html(lang="en")
+    head
+        include components/header
+        script(type="text/javascript", src="/tagmanager/bootstrap-tagmanager.js");
+        link(rel="stylesheet", href="/tagmanager/bootstrap-tagmanager.css");
+    body
+        .container
+            include components/navbar
+            legend Experiments
+            ul.breadcrumb
+                li
+                    a(href="/experiments") Experiments
+                if chosenExperiment
+                    li
+                        span.divider /
+                        a(href="/experiments/"+chosenExperiment.experimentId+"/edit") #{chosenExperiment.experimentName}
+                if newExperiment
+                    li
+                        span.divider /
+                        a(href="#") new experiment
+
+            if newExperiment
+                include components/addExperiment
+            if chosenExperiment
+                include components/editExperiment

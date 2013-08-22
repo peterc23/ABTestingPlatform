@@ -1,0 +1,10 @@
+.navbar
+    .navbar-inner
+        a.brand(href="/") Experiment Manager
+        ul.nav
+            li.divider-vertical
+            li(class=(url.toLowerCase()=="/experiments"?"active":""))
+                a(href="/experiments") Experiments
+            li.divider-vertical
+            li(class=(url.toLowerCase()=="/activeExperiments"?"active":""))
+                a(href="/activeExperiments") Active Experiments

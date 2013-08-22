@@ -1,0 +1,26 @@
+table.table.table-bordered.table-hover
+    thead
+        tr
+            th Experiment Name
+            th Description
+            th Active Variant
+            th % of Users Exposed to Experiment
+            th % of Users in this variant.
+            th Edit
+    tbody
+        each experiment in activeExperiments
+            tr
+                td
+                    p #{experiment.experimentName}
+                td
+                    p #{experiment.experimentDesc}
+                td
+                    p #{experiment.activeExperimentVariant}
+                td
+                    p #{experiment.activeExperimentHash}
+                td
+                    p #{experiment.activeExperimentPercent}
+                td
+                    a.btn.btn-primary(href="/activeExperiments/#{experiment.activeExperimentId}/edit") Edit
+                    &nbsp;
+                    button.btn.btn-danger(onclick="onDeleteMenuItemButtonClicked(#{experiment.activeExperimentId}") Delete
